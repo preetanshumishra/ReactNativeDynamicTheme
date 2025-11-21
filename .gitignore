@@ -1,0 +1,74 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Testing
+coverage/
+
+# Production
+build/
+dist/
+
+# Misc
+.DS_Store
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# iOS
+ios/build/
+ios/Pods/
+ios/Podfile.lock
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+*.xcodeproj/xcuserdata/
+*.xcworkspace/xcuserdata/
+DerivedData/
+
+# Android
+android/.gradle
+android/build/
+android/.idea
+android/local.properties
+android/gradlew
+android/gradlew.bat
+*.jks
+*.keystore
+
+# TypeScript
+*.tsbuildinfo
+
+# Babel
+.babelrc.js
+
+# Metro bundler
+.metro-health-check-result.json
+
+# Temp
+*.tmp
