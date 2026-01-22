@@ -1,116 +1,67 @@
-# React Native Dynamic Theme
+# ReactNativeDynamicTheme
 
-A feature-rich React Native mobile application with dynamic theming system, MVVM architecture, and state management using Zustand.
+A feature-rich React Native application demonstrating advanced theming with 5 distinct color schemes, persistent theme storage, and cross-platform mobile support via Expo.
 
-## Features
+## Overview
 
-- **Dynamic Theming**: 5 pre-built color themes that can be switched at runtime
-- **Bottom Tab Navigation**: Three main screens with intuitive navigation
-- **MVVM Architecture**: Clean separation of concerns with ViewModels
-- **State Management**: Zustand for efficient global state management
-- **Persistent Storage**: AsyncStorage integration for theme persistence
-- **Splash Screens**: Native splash screens for both iOS and Android
-- **Cross-platform**: Fully functional on iOS and Android
+This project showcases professional theming patterns in React Native:
+- **5 Themes** - Light, Dark, Ocean, Forest, and Sunset color schemes
+- **Zustand State Management** - Lightweight, modern state management
+- **AsyncStorage Persistence** - Theme preference persists across sessions
+- **Bottom Tab Navigation** - Mobile-friendly navigation pattern
+- **TypeScript** - Full type safety across the application
+- **Hermes Engine** - Performance optimization enabled
 
-## Theme Variants
+## Tech Stack
 
-The app includes 5 built-in themes:
-1. **Light** - Clean light theme with neutral colors
-2. **Dark** - Full dark theme for eye comfort
-3. **Ocean** - Blue-themed professional look
-4. **Forest** - Green-themed nature-inspired theme
-5. **Sunset** - Warm orange and pink tones
+- React Native 0.76+
+- Expo 54.0.25
+- TypeScript 5.3+
+- Zustand 5.0.8
+- React Navigation 6+
+- AsyncStorage 1.x
+- ESLint + Prettier
 
-## Project Structure
+## Quick Start
 
-```
-ReactNativeDynamicTheme/
-├── src/
-│   ├── screens/       # App screens
-│   ├── navigation/    # React Navigation setup
-│   ├── store/         # Zustand store configuration
-│   ├── theme/         # Theme definitions and utilities
-│   ├── components/    # Reusable components
-│   └── hooks/         # Custom hooks
-├── android/           # Android native code
-├── ios/              # iOS native code
-└── App.tsx           # Root component
-```
-
-## Getting Started
-
-### Prerequisites
-
-- Node.js 16+ and npm/yarn
-- React Native development environment set up
-- iOS: Xcode 14+ and CocoaPods
-- Android: Android Studio and Android SDK
-
-### Installation
-
-1. Install dependencies:
 ```bash
+# Install dependencies
 npm install
-```
 
-2. Install iOS pods:
-```bash
-cd ios && pod install && cd ..
-```
-
-3. Start the Metro bundler:
-```bash
+# Start Expo development server
 npm start
-```
 
-4. Run on iOS:
-```bash
+# Run on iOS Simulator
 npm run ios
-```
 
-5. Run on Android:
-```bash
+# Run on Android Emulator
 npm run android
+
+# Web preview
+npm run web
 ```
 
-## Development
+## Key Features
 
-### Available Commands
+- 5 pre-configured color themes with consistent design system
+- Real-time theme switching with state preservation
+- AsyncStorage persistence for user preferences
+- Bottom tab navigation with themed styling
+- Full TypeScript type safety
+- Responsive layout handling
+- Splash screen support
+- ESLint code quality checks
 
-- `npm start` - Start Metro bundler
-- `npm run ios` - Build and run on iOS simulator
-- `npm run android` - Build and run on Android emulator
-- `npm run build:ios` - Build iOS app for release
-- `npm run build:android` - Build Android APK
+## Building for Production
 
-### Key Technologies
+```bash
+# iOS: Use Expo EAS
+eas build --platform ios
 
-- **React Native**: Cross-platform mobile framework
-- **React Navigation**: Navigation library
-- **Zustand**: Lightweight state management
-- **TypeScript**: Type-safe development
-- **Hermes Engine**: Performance-optimized JavaScript engine
-
-## Theme Management
-
-Themes are managed through Zustand store and persist across app sessions:
-
-```typescript
-// Store automatically handles persistence
-const { currentTheme, setTheme, themes } = useThemeStore();
-
-// Switch theme
-setTheme('dark');
+# Android: Use Expo EAS
+eas build --platform android
 ```
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Author
-
-Preetanshu Mishra
-
-## Contributing
-
-Feel free to fork this repository and submit pull requests for any improvements.
+MIT License - See LICENSE file for details.
