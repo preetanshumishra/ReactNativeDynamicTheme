@@ -32,3 +32,12 @@
 *.mp3 binary
 *.gz binary
 *.zip binary
+
+# Exclude from GitHub language detection
+node_modules/** linguist-vendored
+*.cmake linguist-vendored
+CMakeLists.txt linguist-vendored
+.gradle/** linguist-vendored
+build/** linguist-vendored
+dist/** linguist-vendored
+.cocoapods/** linguist-vendored
