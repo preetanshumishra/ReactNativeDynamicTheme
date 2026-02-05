@@ -51,3 +51,7 @@ Pods/** linguist-vendored linguist-generated
 package-lock.json linguist-vendored
 yarn.lock linguist-vendored
 *.podspec linguist-vendored
+
+# Android specific
+android/** linguist-vendored=true
+android/app/src/main/jni/** linguist-vendored
