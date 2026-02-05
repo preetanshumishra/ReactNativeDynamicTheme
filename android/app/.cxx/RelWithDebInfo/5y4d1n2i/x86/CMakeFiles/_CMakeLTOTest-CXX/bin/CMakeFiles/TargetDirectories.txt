@@ -1,4 +1,0 @@
-/Users/preetanshumishra/Projects/ReactNativeApp/android/app/.cxx/RelWithDebInfo/5y4d1n2i/x86/CMakeFiles/_CMakeLTOTest-CXX/bin/CMakeFiles/foo.dir
-/Users/preetanshumishra/Projects/ReactNativeApp/android/app/.cxx/RelWithDebInfo/5y4d1n2i/x86/CMakeFiles/_CMakeLTOTest-CXX/bin/CMakeFiles/boo.dir
-/Users/preetanshumishra/Projects/ReactNativeApp/android/app/.cxx/RelWithDebInfo/5y4d1n2i/x86/CMakeFiles/_CMakeLTOTest-CXX/bin/CMakeFiles/edit_cache.dir
-/Users/preetanshumishra/Projects/ReactNativeApp/android/app/.cxx/RelWithDebInfo/5y4d1n2i/x86/CMakeFiles/_CMakeLTOTest-CXX/bin/CMakeFiles/rebuild_cache.dir

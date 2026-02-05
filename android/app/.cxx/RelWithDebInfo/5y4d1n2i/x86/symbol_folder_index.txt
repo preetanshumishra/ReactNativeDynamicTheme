@@ -1,1 +1,0 @@
-/Users/preetanshumishra/Projects/ReactNativeApp/android/app/build/intermediates/cxx/RelWithDebInfo/5y4d1n2i/obj/x86
