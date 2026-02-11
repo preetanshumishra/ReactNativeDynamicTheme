@@ -56,8 +56,6 @@ android/.gradle
 android/build/
 android/.idea
 android/local.properties
-android/gradlew
-android/gradlew.bat
 android/app/.cxx/
 android/app/build/
 android/app/.gradle
