@@ -18,45 +18,45 @@ ReactNativeDynamicTheme showcases **professional theming patterns** in React Nat
 
 ```
 ReactNativeDynamicTheme/
+├── App.tsx                           # Root component
+├── index.js                          # Entry point
 ├── src/
 │   ├── resources/
 │   │   └── themes.ts                 # Theme definitions (5 themes)
-│   │
 │   ├── store/
 │   │   └── themeStore.ts             # Zustand theme state management
-│   │
 │   ├── screens/
 │   │   ├── HomeScreen.tsx            # Home screen with theme demo
 │   │   ├── ProfileScreen.tsx         # Profile screen
 │   │   └── ThemeSelectionScreen.tsx  # Theme switcher UI
-│   │
-│   ├── navigation/
-│   │   ├── RootNavigator.tsx         # Tab navigation setup
-│   │   └── [Navigation stacks]
-│   │
-│   ├── components/
-│   │   └── [Reusable components]
-│   │
-│   └── App.tsx                       # Root component
+│   └── navigation/
+│       └── RootNavigator.tsx         # Tab navigation setup
 │
-├── package.json                      # Dependencies
+├── android/                          # Native Android project
+├── ios/                              # Native iOS project
+├── __tests__/                        # Jest tests
+├── package.json                      # Dependencies and scripts
 ├── tsconfig.json                     # TypeScript config
-├── app.json                          # Expo config
-└── eas.json                          # EAS build config
+├── babel.config.js                   # Babel config
+├── metro.config.js                   # Metro bundler config
+├── jest.config.js                    # Jest config
+└── app.json                          # React Native app metadata
 ```
 
 ## Tech Stack
 
 | Component | Version | Purpose |
 |-----------|---------|---------|
-| **React Native** | 0.76+ | Mobile framework |
-| **Expo** | 54.0.25 | Cross-platform build |
+| **React Native** | 0.82.1 | Mobile framework (CLI, not Expo) |
+| **React** | 19.1.1 | UI library |
 | **TypeScript** | 5.8.3 | Type safety |
 | **Zustand** | 5.0.8 | Lightweight state management |
-| **React Navigation** | 6+ | Tab & stack navigation |
+| **React Navigation** | 7.x | Tab & stack navigation |
 | **AsyncStorage** | 2.2.0 | Persistent storage |
-| **ESLint** | Latest | Code quality |
-| **Prettier** | Latest | Code formatting |
+| **react-native-splash-screen** | 3.3.0 | Native splash screen |
+| **ESLint** | 8.x | Code quality |
+| **Prettier** | 2.8.8 | Code formatting |
+| **Jest** | 29.x | Unit testing |
 
 ## Available Themes
 
@@ -206,30 +206,28 @@ export const HomeScreen = () => {
 
 ### Prerequisites
 - Node.js 20+
-- npm or yarn
-- Expo CLI: `npm install -g expo-cli`
-- iOS Simulator (Mac only) or Android Emulator
+- npm
+- Xcode + iOS Simulator (Mac only, for iOS)
+- Android Studio + Android Emulator (for Android)
+- CocoaPods (for iOS native dependencies)
 
 ### Installation & Running
 
 ```bash
-# Install dependencies
+# Install JavaScript dependencies
 npm install
 
-# Start Expo development server
+# Install iOS native dependencies (Mac only)
+cd ios && pod install && cd ..
+
+# Start the Metro bundler
 npm start
 
-# Run on iOS Simulator (Mac only)
+# In another terminal, run on iOS Simulator (Mac only)
 npm run ios
 
-# Run on Android Emulator
+# Or run on Android Emulator
 npm run android
-
-# Run on web (preview only)
-npm run web
-
-# Run on physical device
-# Scan QR code with Expo app on device
 ```
 
 ## Theme Usage
@@ -344,21 +342,24 @@ When creating themes, ensure:
 ### iOS Build
 
 ```bash
-# Build with EAS (Expo Application Services)
-eas build --platform ios
+# Open the workspace in Xcode and archive
+cd ios
+open ReactNativeDynamicTheme.xcworkspace
 
-# Or locally with Xcode
-cd ios && xcodebuild build
+# Or build from the command line
+xcodebuild -workspace ios/ReactNativeDynamicTheme.xcworkspace \
+  -scheme ReactNativeDynamicTheme \
+  -configuration Release build
 ```
 
 ### Android Build
 
 ```bash
-# Build with EAS
-eas build --platform android
+# Build a release APK
+cd android && ./gradlew assembleRelease
 
-# Or locally with Gradle
-cd android && ./gradlew build
+# Or build a release bundle (AAB) for Play Store
+cd android && ./gradlew bundleRelease
 ```
 
 ## TypeScript Configuration
@@ -374,14 +375,9 @@ cd android && ./gradlew build
 **ESLint** enforces code standards:
 ```bash
 npm run lint          # Check code quality
-npm run lint:fix      # Auto-fix issues
 ```
 
-**Prettier** formats code consistently:
-```bash
-npm run format        # Format code
-npm run format:check  # Check formatting
-```
+**Prettier** is configured (see `.prettierrc.js`) and runs through the ESLint integration in `@react-native/eslint-config`.
 
 ## Testing
 
@@ -422,7 +418,6 @@ describe('useThemeStore', () => {
 ## Resources
 
 - [React Native Documentation](https://reactnative.dev/)
-- [Expo Documentation](https://docs.expo.dev/)
 - [Zustand Documentation](https://github.com/pmndrs/zustand)
 - [React Navigation](https://reactnavigation.org/)
 - [AsyncStorage API](https://react-native-async-storage.github.io/async-storage/)
