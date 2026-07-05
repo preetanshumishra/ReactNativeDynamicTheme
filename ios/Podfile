@@ -33,13 +33,15 @@ target 'ReactNativeDynamicTheme' do
 
     # Xcode 26.5's clang rejects fmt's consteval format-string checks
     # ("call to consteval function ... is not a constant expression").
-    # Neutralize FMT_CONSTEVAL so those checks fall back to runtime.
-    installer.pods_project.targets.each do |target|
-      if ['fmt', 'RCT-Folly'].include?(target.name)
-        target.build_configurations.each do |build_config|
-          build_config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] ||= ['$(inherited)']
-          build_config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] << 'FMT_CONSTEVAL='
-        end
+    # fmt re-derives FMT_USE_CONSTEVAL from __cpp_consteval, so a -D flag is
+    # overwritten; force the non-consteval path in the installed header instead.
+    fmt_base = File.join(installer.sandbox.root, 'fmt', 'include', 'fmt', 'base.h')
+    if File.exist?(fmt_base)
+      text = File.read(fmt_base)
+      patched = text.gsub('#  define FMT_USE_CONSTEVAL 1', '#  define FMT_USE_CONSTEVAL 0')
+      if patched != text
+        File.chmod(0644, fmt_base) # pod lays the header down read-only (0444)
+        File.write(fmt_base, patched)
       end
     end
   end
