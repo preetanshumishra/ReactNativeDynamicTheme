@@ -30,5 +30,17 @@ target 'ReactNativeDynamicTheme' do
       :mac_catalyst_enabled => false,
       # :ccache_enabled => true
     )
+
+    # Xcode 26.5's clang rejects fmt's consteval format-string checks
+    # ("call to consteval function ... is not a constant expression").
+    # Neutralize FMT_CONSTEVAL so those checks fall back to runtime.
+    installer.pods_project.targets.each do |target|
+      if ['fmt', 'RCT-Folly'].include?(target.name)
+        target.build_configurations.each do |build_config|
+          build_config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] ||= ['$(inherited)']
+          build_config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] << 'FMT_CONSTEVAL='
+        end
+      end
+    end
   end
 end
